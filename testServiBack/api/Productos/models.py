@@ -5,6 +5,6 @@ from api.Categorias.models import Categorias
 class Productos(models.Model):
     nombre = models.CharField(max_length=250)
     detalle = models.CharField(max_length=250)
-    cantidad = models.IntegerField
-    precio = models.IntegerField
+    cantidad = models.BigIntegerField(blank=True, null=True)
+    precio = models.BigIntegerField(blank=True, null=True)
     categoria = models.ForeignKey(Categorias, models.CASCADE)

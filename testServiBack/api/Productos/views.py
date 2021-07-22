@@ -9,7 +9,7 @@ from .serializers import ProductosSerializer, ProductosGetSerializer
 
 # Create your views here.
 
-class ProductoView(APIView):
+class ProductoViews(APIView):
 
     def get(self, request):
         try:

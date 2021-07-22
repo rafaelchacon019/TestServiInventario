@@ -9,4 +9,4 @@ class ProductosSerializer(serializers.ModelSerializer):
 class ProductosGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Productos
-        feild = '__all__'
+        fields = '__all__'

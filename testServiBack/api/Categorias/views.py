@@ -1,38 +1,38 @@
 from django.shortcuts import render, get_object_or_404
-from rest_framework import serializers, status
-from rest_framework import response
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Categorias
 from .serializers import CategoriasSerializer, CategoriasGetSerializer
 # Create your views here.
+
 class CategoriasViews(APIView):
 
     def get(self, request):
         try:
             categorias = Categorias.objects.all()
-            serializer = Categorias.CategoriasGetSerializer(categorias, many=True)
-            return Response(serializer.data, status=status.HTTP_202_OK)
+            serializer = CategoriasGetSerializer(categorias, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
     def post(self, request):
         try:
-            serializer = CategoriasSerializer(data=request)
+            serializer = CategoriasSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(['Elemento insertado.'], status=status.HTTP_200_OK)
             else:
-                return Response([''], status=status.HTTP_400_BAD_REQUEST)
+                return Response(['Error 400'], status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
     
     def put(self, request, id=None):
         try:            
-            categorias = get_object_or_404(Categorias, pk=id)
-            serializer = CategoriasSerializer(categorias, data=request)
+            categorias = get_object_or_404(Categorias, id=id)
+            serializer = CategoriasSerializer(categorias, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(['Elemento actualizado.'], status=status.HTTP_200_OK)
