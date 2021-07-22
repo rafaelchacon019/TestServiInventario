@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'api',
+    'api.Categorias',
+    'api.Productos',
+    'api.Usuarios',
 ]
 
 MIDDLEWARE = [
@@ -74,12 +78,18 @@ WSGI_APPLICATION = 'testServiBack.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': BASE_DIR / 'db.mysql',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'test',
+#         'USER': 'root',
+#         'PASSWORD': 'password',
+#         # 'HOST': 'localhost',
+#         'HOST': '/cloudsql/servi-geomarketing-chatbot-dev:us-central1:manual-geomarketing',
+#         # 'HOST': '34.121.221.55',
+#         'PORT': '3306',
+#     }
+# }
 
 
 # Password validation
