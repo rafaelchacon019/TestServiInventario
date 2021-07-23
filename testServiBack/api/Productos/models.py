@@ -1,6 +1,7 @@
 from django.db import models
 from api.Categorias.models import Categorias
 from api.Usuarios.models import Usuarios
+from api.Proveedor.models import Proveedor
 
 # Create your models here.
 class Productos(models.Model):
@@ -10,3 +11,4 @@ class Productos(models.Model):
     precio = models.BigIntegerField(blank=True, null=True)
     categoria = models.ForeignKey(Categorias, models.CASCADE)
     usuarios = models.ManyToManyField(Usuarios)
+    proveedor = models.ManyToManyField(Proveedor)
