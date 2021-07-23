@@ -15,6 +15,8 @@ import { ProductosEditarComponent } from './components/productos-editar/producto
 import { ProductosAgregarComponent } from './components/productos-agregar/productos-agregar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { VentasComponent } from './components/ventas/ventas.component';
+import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
     ProductosAgregarComponent,
     HeaderComponent,
     UsuariosComponent,
+    VentasComponent,
+    ProveedoresComponent,
   ],
   imports: [
     BrowserModule,

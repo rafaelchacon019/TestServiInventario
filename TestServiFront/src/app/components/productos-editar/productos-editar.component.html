@@ -1,1 +1,30 @@
-<p>productos-editar works!</p>
+<body>
+    <div class="registration-form">
+        <form>
+
+            <div class="form-group">
+                <input type="text" class="form-control item" id="nombre" placeholder="Nombre">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control item" id="detalle" placeholder="Detalle">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="precio" placeholder="Precio">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control item" id="cantidad" placeholder="Cantidad">
+            </div>
+            <select class="form-select item ">
+                <option selected>Categoria</option>
+                <option value="1">one</option>
+                <option value="2">two</option>
+            </select>
+            <div class="form-group mb-1">
+                <button type="button" class="btn btn-block return me-3" routerLinkActive="active" [routerLink]="['/productos']">Volver</button>
+
+                <button type="button" class="btn btn-block register-prod me-3">Agregar</button>
+            </div>
+        </form>
+
+    </div>
+</body>

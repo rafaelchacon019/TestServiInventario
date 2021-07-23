@@ -1,4 +1,16 @@
-<div class="container">
+<div class="container mt-5">
+
+    <div class="upper-part ">
+        <h1>Usuarios</h1>
+
+        <div class="form-group">
+            <input type="input" class="form-control search" id="buscar" placeholder="Buscar">
+
+            <button type="button" class="btn btn-block agregar-usuario me-3">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <table class="table table-bordered table-striped mr-2">
@@ -7,6 +19,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Correo</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -14,6 +27,14 @@
                         <td>Rafael</td>
                         <td>Chacon</td>
                         <td>rafael@gmail.com</td>
+                        <td class="actions">
+                            <button type="button" class="btn btn-block editar-usuario me-3">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-block eliminar-usuario me-3">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

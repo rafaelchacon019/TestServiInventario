@@ -4,6 +4,10 @@ body {
     width: 100%;
 }
 
+.upper {
+    text-align: center;
+}
+
 .registration-form {
     padding: 50px 0;
     min-height: 100vh;

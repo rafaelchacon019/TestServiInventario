@@ -1,26 +1,45 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered table-striped mr-2">
-                <thead>
-                    <tr class="table-dark">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Detalle</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Categoria</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>coca-cola</td>
-                        <td>Bebida azucara gaseosa</td>
-                        <td>5</td>
-                        <td>$1.500</td>
-                        <td>Bebidas</td>
-                    </tr>
-                </tbody>
-            </table>
+<div class="container mt-5">
+    <div class="upper-part mb-3">
+        <h1>Productos</h1>
+
+        <div class="form-group">
+            <input type="input" class="form-control search" id="buscar" placeholder="Buscar">
+
+            <button type="button" class="btn btn-block agregar-usuario me-3" routerLinkActive="active" [routerLink]="['/agregarProducto']">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered table-striped mr-2">
+                    <thead>
+                        <tr class="table-dark">
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Detalle</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>coca-cola</td>
+                            <td>Bebida azucara gaseosa</td>
+                            <td>5</td>
+                            <td>$1.500</td>
+                            <td>Bebidas</td>
+                            <td class="actions">
+                                <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarProducto']">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-block eliminar-producto me-3">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
