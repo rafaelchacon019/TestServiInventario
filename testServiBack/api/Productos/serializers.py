@@ -4,7 +4,7 @@ from .models import Productos
 class ProductosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Productos
-        fields = ('nombre', 'detalle', 'cantidad', 'precio', 'categoria')
+        fields = ('nombre', 'detalle', 'cantidad', 'precio', 'categoria','usuarios')
 
 class ProductosGetSerializer(serializers.ModelSerializer):
     class Meta:

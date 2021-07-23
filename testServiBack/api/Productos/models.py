@@ -9,4 +9,4 @@ class Productos(models.Model):
     cantidad = models.BigIntegerField(blank=True, null=True)
     precio = models.BigIntegerField(blank=True, null=True)
     categoria = models.ForeignKey(Categorias, models.CASCADE)
-    Usuarios = models.ManyToManyField(Usuarios)
+    usuarios = models.ManyToManyField(Usuarios)

@@ -26,7 +26,7 @@ class ProductoViews(APIView):
                 serializer.save()
                 return Response(['Elemento insertado.'], status=status.HTTP_200_OK)
             else:
-                return Response([], status=status.HTTP_200_OK)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
@@ -38,7 +38,7 @@ class ProductoViews(APIView):
                 serializer.save()
                 return Response(['Elemento actualizado.'], status=status.HTTP_200_OK)
             else:
-                return Response([], status=status.HTTP_200_OK)
+                return Response(['Error 400'], status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
