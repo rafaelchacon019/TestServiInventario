@@ -6,7 +6,7 @@ body {
 
 .registration-form {
     padding: 50px 0;
-    min-height: 93vh;
+    min-height: 100vh;
 }
 
 .registration-form form {
@@ -36,6 +36,7 @@ body {
     border: none;
     color: white;
     margin-top: 20px;
+    min-width: 100px;
 }
 
 .registration-form .return {
@@ -46,5 +47,10 @@ body {
     background-color: #DC4444;
     border: none;
     color: white;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    min-width: 100px;
+}
+
+.btn {
+    display: inline-block;
 }
