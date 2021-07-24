@@ -57,3 +57,17 @@ class ProveedorInfoProductos(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+class ProveedorId(APIView):
+
+    def get(self, request, id=None):
+        try:
+            if id is not None:
+                lista_proveedor = Proveedor.objects.filter(id=id)
+                serializer = ProveedorSerializer(lista_proveedor, many=True)               
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response([], status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
