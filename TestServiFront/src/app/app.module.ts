@@ -18,6 +18,11 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { VentasComponent } from './components/ventas/ventas.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ServiceUsuarioService } from './services/service-usuario.service';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +42,12 @@ import { ProveedoresComponent } from './components/proveedores/proveedores.compo
   ],
   imports: [
     BrowserModule,
-    APP_ROUTING
+    APP_ROUTING,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ServiceUsuarioService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

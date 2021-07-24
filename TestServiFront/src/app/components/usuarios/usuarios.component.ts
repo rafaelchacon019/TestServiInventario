@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { usuariosMock } from 'src/app/mocks';
+import { Usuarios } from 'src/app/models';
+import { ServiceUsuarioService } from '../../services/service-usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuariosComponent implements OnInit {
 
-  constructor() { }
+  usuarios: Usuarios = [];
+  constructor( private serviceUsuarioService: ServiceUsuarioService ) { }
 
   ngOnInit(): void {
+    this.obtenerUsuario();
+  }
+
+  // tslint:disable-next-line:typedef
+  obtenerUsuario(){
+    this.serviceUsuarioService.obtenerUsuarios().subscribe(
+      (usuarios) => {
+        this.usuarios = usuarios;
+        console.log(usuarios);
+      }
+    );
   }
 
 }

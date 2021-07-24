@@ -6,25 +6,25 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-9 col-lg-8 mx-auto">
-                            <h3 class="login-heading mb-4">Welcome back!</h3>
+                            <h3 class="login-heading mb-4">Bienvenido</h3>
                             <form>
                                 <div class="mb-3">
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                                    <label for="inputEmail">Email address</label>
+                                    <input type="email" id="inputEmail" class="form-control" placeholder="Correo electronico" required autofocus>
+                                    <label for="inputEmail">Correo electronico</label>
                                 </div>
 
                                 <div class="mb-3">
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                    <label for="inputPassword">Password</label>
+                                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                                    <label for="inputPassword">Contraseña</label>
                                 </div>
 
                                 <div class="mb-3 form-check">
                                     <input type="checkbox" class="form-check-input" id="customCheck1">
-                                    <label class="form-check-label" for="customCheck1">Remember password</label>
+                                    <label class="form-check-label" for="customCheck1">Recordar usuario</label>
                                 </div>
-                                <button class="btn btn-lg btn-primary btn-block btn-login  text-uppercase font-weight-bold mb-2" type="submit">Sign in</button>
+                                <button class="btn btn-lg btn-primary btn-block btn-login  text-uppercase font-weight-bold mb-2" type="submit">ingresar</button>
                                 <div class="text-center">
-                                    <a class="small" href="#">Forgot password?</a></div>
+                                    <a class="small" routerLinkActive="active" [routerLink]="['/registro']">¿Aún no tienes cuenta? registrate</a></div>
                             </form>
                         </div>
                     </div>

@@ -23,10 +23,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Rafael</td>
-                        <td>Chacon</td>
-                        <td>rafael@gmail.com</td>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td> {{ usuario.nombre }}</td>
+                        <td>{{ usuario.apellido }}</td>
+                        <td>{{ usuario.email }}</td>
                         <td class="actions">
                             <button type="button" class="btn btn-block editar-usuario me-3">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>

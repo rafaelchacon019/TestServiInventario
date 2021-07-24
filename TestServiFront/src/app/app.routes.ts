@@ -9,6 +9,7 @@ import { CategoriasComponent } from 'src/app/components/categorias/categorias.co
 import { CategoriasAgregarComponent } from 'src/app/components/categorias-agregar/categorias-agregar.component';
 import { CategoriasEditarComponent } from 'src/app/components/categorias-editar/categorias-editar.component';
 import { LoginComponent } from 'src/app/components/login/login.component';
+import { RegistroComponent } from 'src/app/components/registro/registro.component';
 
 
 const APP_ROUTES: Routes = [
@@ -21,6 +22,7 @@ const APP_ROUTES: Routes = [
     { path: 'agregarCategoria', component: CategoriasAgregarComponent },
     { path: 'editarCategoria', component: CategoriasEditarComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'registro', component: RegistroComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

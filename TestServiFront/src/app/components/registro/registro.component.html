@@ -9,27 +9,31 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Register</h5>
                         <form class="form-signin">
+
                             <div class="mb-3">
-                                <input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
-                                <label for="inputUserame">Username</label>
+                                <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" required autofocus>
+                                <label for="inputUserame">Nombre</label>
                             </div>
 
                             <div class="mb-3">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                                <label for="inputEmail">Email address</label>
+                                <input type="text" id="inputApellido" class="form-control" placeholder="Apellido" required autofocus>
+                                <label for="inputUserame">Apellido</label>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="email" id="inputCorreo" class="form-control" placeholder="Correo electronico" required>
+                                <label for="inputEmail">Correo electronico</label>
                             </div>
 
                             <hr>
 
                             <div class="mb-3">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                                <label for="inputPassword">Password</label>
+                                <input type="password" id="inputContraseña" class="form-control" placeholder="Contraseña" required>
+                                <label for="inputPassword">Contraseña</label>
                             </div>
 
-
-
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-                            <a class="d-block text-center mt-2 small" href="#">Sign In</a>
+                            <button class="btn btn-lg btn-block text-uppercase mb-3" type="submit">Registrar</button>
+                            <a class="d-block text-center mt-2 small" routerLinkActive="active" [routerLink]="['/login']">¿Ya te encuentras registrado? Inicia sesión</a>
                         </form>
                     </div>
                 </div>
