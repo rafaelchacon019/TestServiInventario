@@ -1,4 +1,3 @@
-from django.db.models import fields
 from rest_framework import serializers
 from .models import Categorias
 from api.Productos.models import Productos
@@ -18,8 +17,8 @@ class MixProductosSerializer(serializers.ModelSerializer):
         model = Productos
         fields = ('id','nombre','detalle', 'cantidad', 'precio')
 
-class MixSeriqlizer(serializers.ModelSerializer):
+class MixSerializer(serializers.ModelSerializer):
     productos = MixProductosSerializer(many=True, read_only=True, source='productos_set')
     class Meta:
         model = Categorias
-        fields = ('productos', 'id','nombre')
+        fields = ('id','nombre','productos')

@@ -14,7 +14,7 @@ class ProductoViews(APIView):
     def get(self, request):
         try:
             listas = Productos.objects.all()
-            serializer = MixSerializer(listas, many=True)
+            serializer = ProductosGetSerializer(listas, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
@@ -47,5 +47,14 @@ class ProductoViews(APIView):
             productos = Productos.objects.get(id=id)
             productos.delete()
             return Response(['Elemento Eliminado.'], status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+class ProductosInfo(APIView):
+    def get(self, request):
+        try:
+            listas = Productos.objects.all()
+            serializer = MixSerializer(listas, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)

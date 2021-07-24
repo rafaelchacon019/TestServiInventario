@@ -8,7 +8,7 @@ from api.Usuarios.models import Usuarios
 class ProductosSerializer(serializers.ModelSerializer):
     class Meta:
         model = Productos
-        fields = ('nombre', 'detalle', 'cantidad', 'precio', 'categoria','usuarios')
+        fields = ('nombre', 'detalle', 'cantidad', 'precio', 'categoria','usuarios','proveedor')
 
 class ProductosGetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,8 +26,8 @@ class MixUsuariosSerializer(serializers.ModelSerializer):
         fields = ('id', 'nombre', 'apellido')
 
 class MixSerializer(serializers.ModelSerializer):
-    categorias = MixCategoriasSerializer(many=True, read_only=True, source='categorias')
-    usuarios = MixUsuariosSerializer(many=True, read_only=True, source='usuarios')
+    categorias = MixCategoriasSerializer(many=True, read_only=True, source='categorias_set')
+    usuarios = MixUsuariosSerializer(many=True, read_only=True)
     class Meta:
         model = Productos
         fields = ('id', 'nombre', 'detalle', 'cantidad', 'precio', 'categorias', 'usuarios')

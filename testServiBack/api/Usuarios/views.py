@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Usuarios
-from .serializers import UsuariosSerializer, UsuariosGetSerializer
+from .serializers import UsuariosSerializer, UsuariosGetSerializer, MixSerializer
 # Create your views here.
 
 class UsuariosViews(APIView):
@@ -48,3 +48,14 @@ class UsuariosViews(APIView):
             return Response(['Elemento eliminado.'], status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+class usuarioInfoProductos(APIView):
+
+    def get(self, request):
+        try:
+            lista = Usuarios.objects.all()
+            serializer = MixSerializer(lista, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
