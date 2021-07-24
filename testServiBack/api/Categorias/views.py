@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Categorias
-from .serializers import CategoriasSerializer, CategoriasGetSerializer
+from .serializers import CategoriasSerializer, CategoriasGetSerializer, MixSeriqlizer
 # Create your views here.
 
 class CategoriasViews(APIView):
@@ -12,7 +12,7 @@ class CategoriasViews(APIView):
     def get(self, request):
         try:
             categorias = Categorias.objects.all()
-            serializer = CategoriasGetSerializer(categorias, many=True)
+            serializer = MixSeriqlizer(categorias, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
