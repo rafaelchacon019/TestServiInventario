@@ -4,6 +4,7 @@ from rest_framework import serializers
 from .models import Productos
 from api.Categorias.models import Categorias
 from api.Usuarios.models import Usuarios
+from api.Proveedor.models import Proveedor
 
 class ProductosSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,9 +26,16 @@ class MixUsuariosSerializer(serializers.ModelSerializer):
         model = Usuarios
         fields = ('id', 'nombre', 'apellido')
 
+class MixProveedorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Proveedor
+        fields = ('id', 'nombre')
+
 class MixSerializer(serializers.ModelSerializer):
-    categorias = MixCategoriasSerializer(many=True, read_only=True, source='categorias_set')
+    # categorias = MixCategoriasSerializer(read_only=True)
+    # categoriaId = serializers.PrimaryKeyRelatedField(write_only=True, queryset=Categorias.objects.all(), source='categorias')
     usuarios = MixUsuariosSerializer(many=True, read_only=True)
+    proveedor = MixProveedorSerializer(many=True, read_only=True)
     class Meta:
         model = Productos
-        fields = ('id', 'nombre', 'detalle', 'cantidad', 'precio', 'categorias', 'usuarios')
+        fields = ('id', 'nombre', 'detalle', 'cantidad', 'precio', 'usuarios', 'proveedor')
