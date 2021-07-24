@@ -58,3 +58,29 @@ class CategoriasInfoProductos(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+class CategoriasId(APIView):
+
+    def get(self, request, id=None):
+        try:
+            if id is not None:
+                lista_categoria = Categorias.objects.filter(id=id)
+                serializer = CategoriasSerializer(lista_categoria, many=True)               
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response([], status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+
+class CategoriasIdProductos(APIView):
+
+    def get(self, request, id=None):
+        try:
+            if id is not None:
+                lista_categoria = Categorias.objects.filter(id=id)
+                serializer = MixSerializer(lista_categoria, many=True)               
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response([], status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
