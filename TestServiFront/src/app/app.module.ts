@@ -20,6 +20,10 @@ import { ProveedoresComponent } from './components/proveedores/proveedores.compo
 
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceUsuarioService } from './services/service-usuario.service';
+import { ServiceProductoService } from './services/service-productos.service';
+import { ServiceCategoriasService } from './services/service-categorias.service';
+import { ProveedorAgregarComponent } from './components/proveedor-agregar/proveedor-agregar.component';
+import { ProveedorEditarComponent } from './components/proveedor-editar/proveedor-editar.component';
 
 
 
@@ -39,6 +43,8 @@ import { ServiceUsuarioService } from './services/service-usuario.service';
     UsuariosComponent,
     VentasComponent,
     ProveedoresComponent,
+    ProveedorAgregarComponent,
+    ProveedorEditarComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +53,8 @@ import { ServiceUsuarioService } from './services/service-usuario.service';
   ],
   providers: [
     ServiceUsuarioService,
+    ServiceProductoService,
+    ServiceCategoriasService,
   ],
   bootstrap: [AppComponent]
 })

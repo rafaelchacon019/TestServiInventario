@@ -1,9 +1,19 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ServiceProductosService {
+import { Observable } from 'rxjs';
+import { RutasServicios } from './rutasServicios';
+import { Productos } from '../models';
 
-  constructor() { }
+
+@Injectable()
+export class ServiceProductoService {
+
+  constructor(private http: HttpClient) { }
+
+  obtenerProductos(): Observable<Productos> {
+    const url = RutasServicios.urlProductos;
+    return this.http.get<Productos>(url);
+  }
 }
+

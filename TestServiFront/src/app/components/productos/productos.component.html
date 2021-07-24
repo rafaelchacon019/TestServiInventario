@@ -23,12 +23,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>coca-cola</td>
-                            <td>Bebida azucara gaseosa</td>
-                            <td>5</td>
-                            <td>$1.500</td>
-                            <td>Bebidas</td>
+                        <tr *ngFor="let producto of productos">
+                            <td> {{ producto.nombre }} </td>
+                            <td> {{ producto.detalle }} </td>
+                            <td> {{ producto.cantidad }} </td>
+                            <td> {{ producto.precio }} </td>
+                            <td> {{ producto.categoria}} </td>
                             <td class="actions">
                                 <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarProducto']">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
