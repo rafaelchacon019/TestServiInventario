@@ -4,3 +4,4 @@ mysql-connector-python==8.0.23
 mysqlclient==2.0.3
 PyMySQL==1.0.2
 django-cors-headers==3.0.2
+# django-oauth-toolkit==1.5.0

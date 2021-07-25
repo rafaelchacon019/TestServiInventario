@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Usuarios(models.Model):
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    email = models.EmailField(blank=False, null=True)
-    password = models.CharField(max_length=20)
+    nombre = models.CharField(max_length=50,blank=True, null=True)
+    apellido = models.CharField(max_length=50, blank=True, null=True)
+    email = models.EmailField(max_length=150, unique=True, null=True)
+    password = models.CharField(max_length=50, blank=True, null=True)
