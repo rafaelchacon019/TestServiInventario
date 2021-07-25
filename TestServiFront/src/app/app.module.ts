@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_ROUTING } from './app.routes';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 import { AppComponent } from './app.component';
@@ -17,13 +19,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { VentasComponent } from './components/ventas/ventas.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
+import { ProveedorAgregarComponent } from './components/proveedor-agregar/proveedor-agregar.component';
+import { ProveedorEditarComponent } from './components/proveedor-editar/proveedor-editar.component';
+
 
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceUsuarioService } from './services/service-usuario.service';
 import { ServiceProductoService } from './services/service-productos.service';
 import { ServiceCategoriasService } from './services/service-categorias.service';
-import { ProveedorAgregarComponent } from './components/proveedor-agregar/proveedor-agregar.component';
-import { ProveedorEditarComponent } from './components/proveedor-editar/proveedor-editar.component';
+import { ServiceProveedorService } from './services/service-proveedor.service';
+import { UsuariosEditarComponent } from './components/usuarios-editar/usuarios-editar.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 
 
@@ -45,16 +51,21 @@ import { ProveedorEditarComponent } from './components/proveedor-editar/proveedo
     ProveedoresComponent,
     ProveedorAgregarComponent,
     ProveedorEditarComponent,
+    UsuariosEditarComponent,
+    FiltroPipe,
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ServiceUsuarioService,
     ServiceProductoService,
     ServiceCategoriasService,
+    ServiceProveedorService,
   ],
   bootstrap: [AppComponent]
 })

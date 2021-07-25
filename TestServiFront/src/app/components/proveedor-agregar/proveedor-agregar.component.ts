@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceProveedorService } from '../../services/service-proveedor.service';
-import { Proveedores } from '../../models';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-proveedor-agregar',
@@ -9,19 +9,36 @@ import { Proveedores } from '../../models';
 })
 export class ProveedorAgregarComponent implements OnInit {
 
-  proveedores: Proveedores = [];
-  constructor( private serviceProveedorService: ServiceProveedorService ) { }
+  public formularioGrupo: FormGroup;
+
+  constructor( private serviceProveedorService: ServiceProveedorService,
+               private formBuilder: FormBuilder   ) { }
 
   ngOnInit(): void {
+    this.inicializarFormulario();
   }
 
   // tslint:disable-next-line:typedef
-  // guardarProveedor(){
-  //   this.serviceProveedorService.obtenerProveedores( this.proveedores ).subscribe(
-  //     (proveedores) => {
-  //       console.log(proveedores);
-  //     }
-  //   );
-  // }
+  inicializarFormulario(){
+    this.formularioGrupo = this.formBuilder.group({
+      id: 0,
+      nombre: ['', Validators.required],
+      nit: [null, Validators.required],
+      direccion: ['', Validators.required],
+      telefono: [null, Validators.required]
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  guardarProveedor( ){
+    console.log(this.formularioGrupo);
+
+    this.serviceProveedorService.agregarProveedor( this.formularioGrupo.value ).subscribe(
+      () => {
+        alert('Se agregó el proveedor correctamente');
+        this.formularioGrupo.reset();
+      }
+    );
+  }
 
 }

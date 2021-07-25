@@ -1,1 +1,20 @@
-<p>categorias-editar works!</p>
+<body>
+    <div class="registration-form">
+        <form [formGroup]="formularioGrupo">
+            <div class="upper mb-3">
+                <h1 class="text-center">
+                    Editar
+                </h1>
+            </div>
+            <input type="text" class="form-control item" placeholder="Nombre" formControlName="nombre">
+            <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+
+            <div class="form-group mb-1">
+                <button type="button" class="btn btn-block return me-3" routerLinkActive="active" [routerLink]="['/categorias']">Volver</button>
+
+                <button type="submit" class="btn btn-block register-prod me-3" (click)="actualizarCategoria()" [disabled]="formularioGrupo.invalid">Actualizar</button>
+            </div>
+        </form>
+
+    </div>
+</body>

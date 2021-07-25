@@ -9,9 +9,29 @@ export class ServiceProveedorService {
 
   constructor( private http: HttpClient) { }
 
-  // tslint:disable-next-line:no-shadowed-variable
-  obtenerProveedores(Proveedores: Proveedor): Observable<Proveedores> {
+  obtenerProveedor(): Observable<Proveedores> {
     const url = RutasServicios.urlProveedores;
-    return this.http.post<Proveedores>(url, Proveedores);
+    return this.http.get<Proveedores>(url);
+  }
+
+  // tslint:disable-next-line:no-shadowed-variable
+  agregarProveedor(proveedor: Proveedor): Observable<Proveedores> {
+    const url = RutasServicios.urlProveedores;
+    return this.http.post<Proveedores>(url, proveedor);
+  }
+
+  actualizarProveedor(idProveedor: number, proveedor: Proveedor): Observable<Proveedor> {
+    const url = RutasServicios.urlProveedores + idProveedor + '/';
+    return this.http.put<Proveedor>(url, proveedor);
+  }
+
+  obtenerProveedorPorId(idProveedor: number): Observable<Proveedor>{
+    const url = RutasServicios.urlProveedores + 'filterid/' + idProveedor + '/';
+    return this.http.get<Proveedor>(url);
+  }
+
+  eliminarProveedor(idProveedor: number): Observable<Proveedor>{
+    const url = RutasServicios.urlProveedores + idProveedor + '/';
+    return this.http.delete<Proveedor>(url);
   }
 }

@@ -4,7 +4,7 @@
         <h1>Categorias</h1>
 
         <div class="form-group">
-            <input type="input" class="form-control search" id="buscar" placeholder="Buscar">
+            <input type="input" class="form-control search" id="buscar" placeholder="Buscar" name="filtroBusqueda" [(ngModel)]="filtroBusqueda">
 
             <button type="button" class="btn btn-block agregar-usuario me-3" routerLinkActive="active" [routerLink]="['/agregarCategoria']">
                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -16,14 +16,21 @@
                 <table class="table table-bordered table-striped mr-2">
                     <thead>
                         <tr class="table-dark">
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Detalle</th>
+                            <th scope="col"> Nombre </th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Bebidas</td>
-                            <td>Bebida azucara gaseosa</td>
+                        <tr *ngFor="let categoria of categorias | filtro:filtroBusqueda" class="text-center">
+                            <td class="text-center"> {{ categoria.nombre }} </td>
+                            <td class="actions">
+                                <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarCategoria', categoria.id]">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-block eliminar-producto me-3" (click)="eliminarCategoria(categoria.id)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

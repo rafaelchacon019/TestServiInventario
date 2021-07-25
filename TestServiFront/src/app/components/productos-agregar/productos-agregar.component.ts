@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceProductoService } from '../../services/service-productos.service';
 
 @Component({
   selector: 'app-productos-agregar',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosAgregarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private serviceProductoService: ServiceProductoService) { }
 
   ngOnInit(): void {
   }

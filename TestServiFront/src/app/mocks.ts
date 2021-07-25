@@ -1,4 +1,4 @@
-import { Usuarios } from './models';
+import { Usuarios, Proveedores } from './models';
 
 export const usuariosMock: Usuarios = [
      {
@@ -14,4 +14,24 @@ export const usuariosMock: Usuarios = [
         email: 'Brandon@gmail.com',
     }
 ];
+
+export const proveedoresMock: Proveedores = [
+    {
+        id: 1,
+        nombre: 'postobon',
+        nit: 123,
+        direccion: 'crra a 3',
+        telefono: 123456
+    },
+    {
+        id: 2,
+        nombre: 'bimbo',
+        nit: 1234,
+        direccion: 'crra a 3 - 25',
+        telefono: 1234567
+    }
+];
+
+
+
 

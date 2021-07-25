@@ -9,6 +9,7 @@ import { ServiceUsuarioService } from '../../services/service-usuario.service';
 })
 export class UsuariosComponent implements OnInit {
 
+  filtroBusqueda = '';
   usuarios: Usuarios = [];
   constructor( private serviceUsuarioService: ServiceUsuarioService ) { }
 
@@ -22,6 +23,16 @@ export class UsuariosComponent implements OnInit {
       (usuarios) => {
         this.usuarios = usuarios;
         console.log(usuarios);
+      }
+    );
+  }
+
+  // tslint:disable-next-line:typedef
+  eliminarUsuario(idUsuario: number){
+    this.serviceUsuarioService.eliminarUsuario(idUsuario).subscribe(
+      () => {
+        alert('Se elimino el usuario correctamente');
+        this.obtenerUsuario();
       }
     );
   }

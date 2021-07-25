@@ -4,11 +4,7 @@
         <h1>Usuarios</h1>
 
         <div class="form-group">
-            <input type="input" class="form-control search" id="buscar" placeholder="Buscar">
-
-            <button type="button" class="btn btn-block agregar-usuario me-3">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
+            <input type="input" class="form-control search text-center" id="buscar" placeholder="Buscar" name="filtroBusqueda" [(ngModel)]="filtroBusqueda">
         </div>
     </div>
     <div class="row">
@@ -16,22 +12,22 @@
             <table class="table table-bordered table-striped mr-2">
                 <thead>
                     <tr class="table-dark">
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col" class="text-center">Nombre</th>
+                        <th scope="col" class="text-center">Apellido</th>
+                        <th scope="col" class="text-center">Correo</th>
+                        <th scope="col" class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let usuario of usuarios">
-                        <td> {{ usuario.nombre }}</td>
-                        <td>{{ usuario.apellido }}</td>
-                        <td>{{ usuario.email }}</td>
+                    <tr *ngFor="let usuario of usuarios | filtro:filtroBusqueda">
+                        <td class="text-center"> {{ usuario.nombre }}</td>
+                        <td class="text-center">{{ usuario.apellido }}</td>
+                        <td class="text-center">{{ usuario.email }}</td>
                         <td class="actions">
-                            <button type="button" class="btn btn-block editar-usuario me-3">
+                            <button type="button" class="btn btn-block editar-usuario me-3" routerLinkActive="active" [routerLink]="['/editarUsuarios', usuario.id]">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
                             </button>
-                            <button type="button" class="btn btn-block eliminar-usuario me-3">
+                            <button type="button" class="btn btn-block eliminar-usuario me-3" (click)="eliminarUsuario(usuario.id)">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </button>
                         </td>
