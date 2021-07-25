@@ -38,4 +38,4 @@ class MixSerializer(serializers.ModelSerializer):
     proveedor = MixProveedorSerializer(many=True, read_only=True)
     class Meta:
         model = Productos
-        fields = ('id', 'nombre', 'detalle', 'cantidad', 'precio', 'usuarios', 'proveedor')
+        fields = ('id', 'nombre', 'detalle', 'cantidad', 'precio', 'categoria','usuarios', 'proveedor')
