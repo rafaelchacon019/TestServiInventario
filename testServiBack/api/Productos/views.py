@@ -14,7 +14,7 @@ class ProductoViews(APIView):
     def get(self, request):
         try:
             listas = Productos.objects.all()
-            serializer = ProductosGetSerializer(listas, many=True)
+            serializer = MixSerializer(listas, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
