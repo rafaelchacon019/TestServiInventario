@@ -8,31 +8,35 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">Register</h5>
-                        <form class="form-signin">
+                        <form [formGroup]="formularioGrupo" class="form-signin">
 
                             <div class="mb-3">
-                                <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" required autofocus>
-                                <label for="inputUserame">Nombre</label>
+                                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                                <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+                                <label for="nombre">Nombre</label>
                             </div>
 
                             <div class="mb-3">
-                                <input type="text" id="inputApellido" class="form-control" placeholder="Apellido" required autofocus>
-                                <label for="inputUserame">Apellido</label>
+                                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+                                <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+                                <label for="apellido">Apellido</label>
                             </div>
 
                             <div class="mb-3">
-                                <input type="email" id="inputCorreo" class="form-control" placeholder="Correo electronico" required>
-                                <label for="inputEmail">Correo electronico</label>
+                                <input type="text" class="form-control" placeholder="correo electronico" formControlName="email">
+                                <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+                                <label for="correo electronico">Correo electronico</label>
                             </div>
 
                             <hr>
 
                             <div class="mb-3">
-                                <input type="password" id="inputContraseña" class="form-control" placeholder="Contraseña" required>
-                                <label for="inputPassword">Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                                <small *ngIf=" formularioGrupo.controls['direccion'].invalid && formularioGrupo.controls['direccion'].touched">Este campo es obligatorio</small>
+                                <label for="contraseña">Contraseña</label>
                             </div>
 
-                            <button class="btn btn-lg btn-block text-uppercase mb-3" type="submit">Registrar</button>
+                            <button type="button" class="btn btn-lg btn-block text-uppercase mb-3" (click)="registrarUsuario()" [disabled]="formularioGrupo.invalid">Registrar</button>
                             <a class="d-block text-center mt-2 small" routerLinkActive="active" [routerLink]="['/login']">¿Ya te encuentras registrado? Inicia sesión</a>
                         </form>
                     </div>

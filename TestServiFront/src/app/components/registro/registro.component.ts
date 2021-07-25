@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceUsuarioService } from '../../services/service-usuario.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -7,9 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  public formularioGrupo: FormGroup;
+
+  constructor( private serviceUsuarioService: ServiceUsuarioService,
+               private formBuilder: FormBuilder,
+               private router: Router) { }
 
   ngOnInit(): void {
+    this.inicializarFormulario();
+  }
+
+  // tslint:disable-next-line:typedef
+  inicializarFormulario(){
+    this.formularioGrupo = this.formBuilder.group({
+      id: 0,
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  registrarUsuario(){
+    this.serviceUsuarioService.registrarUsuario( this.formularioGrupo.value ).subscribe(
+      () => {
+        alert('Se registro usuario correctamente');
+        this.router.navigate(['/login']);
+      }
+    );
   }
 
 }

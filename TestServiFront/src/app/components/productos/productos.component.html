@@ -19,6 +19,7 @@
                             <th scope="col">Cantidad</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Categoria</th>
+                            <th scope="col">Proveedor</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -27,8 +28,9 @@
                             <td> {{ producto.nombre }} </td>
                             <td> {{ producto.detalle }} </td>
                             <td> {{ producto.cantidad }} </td>
-                            <td> {{ producto.precio }} </td>
+                            <td> ${{ producto.precio | number}} </td>
                             <td> {{ producto.categoria}} </td>
+                            <td> {{ producto.proveedor}} </td>
                             <td class="actions">
                                 <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarProducto']">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>

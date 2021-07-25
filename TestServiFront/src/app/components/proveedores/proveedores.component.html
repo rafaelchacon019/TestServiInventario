@@ -1,9 +1,9 @@
 <div class="container mt-5">
     <div class="upper-part mb-3">
-        <h1>Productos</h1>
+        <h1>Proveedores</h1>
 
         <div class="form-group">
-            <input type="input" class="form-control search" id="buscar" placeholder="Buscar">
+            <input type="input" class="form-control search" id="buscar" name="filtroBusqueda" placeholder="Buscar" [(ngModel)]="filtroBusqueda">
 
             <button type="button" class="btn btn-block agregar-usuario me-3" routerLinkActive="active" [routerLink]="['/agregarProveedor']">
                 <i class="fa fa-plus" aria-hidden="true"></i>
@@ -14,24 +14,24 @@
                 <table class="table table-bordered table-striped mr-2">
                     <thead>
                         <tr class="table-dark">
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Dirección</th>
-                            <th scope="col">NIT</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col" class="text-center">Nombre</th>
+                            <th scope="col" class="text-center">Dirección</th>
+                            <th scope="col" class="text-center">NIT</th>
+                            <th scope="col" class="text-center">Telefono</th>
+                            <th scope="col" class="text-center">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                        <tr *ngFor="let proveedor of proveedores | filtro:filtroBusqueda">
+                            <td class="text-center"> {{ proveedor.nombre }} </td>
+                            <td class="text-center"> {{ proveedor.direccion }} </td>
+                            <td class="text-center"> {{ proveedor.nit }} </td>
+                            <td class="text-center"> {{ proveedor.telefono }} </td>
                             <td class="actions">
-                                <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarProveedor']">
+                                <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarProveedor', proveedor.id]">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </button>
-                                <button type="button" class="btn btn-block eliminar-producto me-3">
+                                <button type="button" class="btn btn-block eliminar-producto me-3" (click)="eliminarProveedor(proveedor.id)">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </button>
                             </td>

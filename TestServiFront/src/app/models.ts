@@ -1,6 +1,7 @@
 export type Usuarios = Usuario[];
 export type Productos = Producto[];
 export type Proveedores = Proveedor[];
+export type Categorias = Categoria[];
 
 export interface Usuario{
     id: number;
@@ -16,6 +17,8 @@ export interface Producto{
     cantidad: string;
     precio: number;
     categoria: number;
+    usuario: [];
+    proveedor: [];
 }
 
 export interface Proveedor{
@@ -24,4 +27,9 @@ export interface Proveedor{
     direccion: string;
     nit: number;
     telefono: number;
+}
+
+export interface Categoria{
+    id: number;
+    nombre: string;
 }
