@@ -46,6 +46,7 @@ class UsuariosViews(APIView):
         try:
             usuarios = get_object_or_404(Usuarios, id=id)
             serializer = UsuariosSerializer(usuarios, data=request.data)
+
             if serializer.is_valid():
                 serializer.save()
                 return Response(['Elemento actualizado.'], status=status.HTTP_200_OK)
