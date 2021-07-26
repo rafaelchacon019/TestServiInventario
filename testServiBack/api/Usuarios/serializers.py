@@ -13,12 +13,14 @@ class UsuariosSerializer(serializers.ModelSerializer):
         model = Usuarios
         fields = ('nombre','apellido','email', 'password')
 
-        extra_kwargs = {'password': {'write_only': True}}        
+        extra_kwargs = {'password': {'write_only': True}}
+        
 
 class CredencialesSerializer(serializers.ModelSerializer):   
     class Meta:
         model = Usuarios
-        fields = ('email', 'password',)
+        fields = ('email', 'password','id')
+        extra_kwargs = {'password': {'write_only': True}}
 
 class UsuariosGetSerializer(serializers.ModelSerializer):
     class Meta:
