@@ -149,4 +149,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Custom user model
+# AUTH_USER_MODEL = "api.Usuarios.Usuarios"
+
 PASSWORD_RESET_TIMEOUT_DAYS = 5

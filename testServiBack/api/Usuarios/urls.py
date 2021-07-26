@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import UsuariosViews, usuarioInfoProductos, UsuarioId, LoginView, UserView
+from .views import UsuariosViews, usuarioInfoProductos, UsuarioId, LoginView#, UserView
 from rest_framework.authtoken import views
 
 app_name = 'Usuarios'

@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from rest_framework import status
-from rest_framework import serializers
-from rest_framework.serializers import Serializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
@@ -9,11 +7,11 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 
 from .models import Usuarios
-from .serializers import UsuariosSerializer, UsuariosGetSerializer, MixSerializer, CredencialesSerializer, UserSerializer, UsuarioLoginSerializer
+from .serializers import UsuariosSerializer, UsuariosGetSerializer, MixSerializer, CredencialesSerializer#, UserSerializer, UsuarioLoginSerializer
 
 # Create your views here.
 
@@ -32,8 +30,11 @@ class UsuariosViews(APIView):
             serializer = UsuariosSerializer(data=request.data)
             
             if serializer.is_valid():
-                token = Token.objects.create(user=User.objects.all())
-                print(token.key)
+                # for usuarios in Usuarios.objects.all():
+                #     token_generator = PasswordResetTokenGenerator()
+                #     token = token_generator.make_token(usuarios)
+                # token = Token.objects.create(token)
+                # print(token.key)
                 serializer.save()
                 return Response(['Elemento insertado.'], status=status.HTTP_200_OK)
             else:
@@ -105,26 +106,26 @@ class LoginView(APIView):
         except Exception as e:
             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
-class UserView(APIView):
-    def get(self, request):
-        try:
-            lista = User.objects.all()
-            serializer = UserSerializer(lista, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except Exception as e:
-            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+# class UserView(APIView):
+#     def get(self, request):
+#         try:
+#             lista = User.objects.all()
+#             serializer = UserSerializer(lista, many=True)
+#             return Response(serializer.data, status=status.HTTP_200_OK)
+#         except Exception as e:
+#             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
 
-    def post(self, request):
-        try:
-            serializer = UserSerializer(data=request.data)
+#     def post(self, request):
+#         try:
+#             serializer = UserSerializer(data=request.data)
             
-            if serializer.is_valid():
+#             if serializer.is_valid():
                               
                 
-                serializer.save()
-                return Response(['Elemento insertado.'], status=status.HTTP_200_OK)
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
+#                 serializer.save()
+#                 return Response(['Elemento insertado.'], status=status.HTTP_200_OK)
+#             else:
+#                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#         except Exception as e:
+#             return Response(str(e), status=status.HTTP_503_SERVICE_UNAVAILABLE)
    

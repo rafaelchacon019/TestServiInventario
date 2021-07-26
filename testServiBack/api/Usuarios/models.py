@@ -6,3 +6,6 @@ class Usuarios(models.Model):
     apellido = models.CharField(max_length=50, blank=True, null=True)
     email = models.EmailField(max_length=150, unique=True, null=True)
     password = models.CharField(max_length=50, blank=True, null=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['password']

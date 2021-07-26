@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 from django.contrib.auth import password_validation, authenticate
 from rest_framework.authtoken.models import Token
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 
 from .models import Usuarios
 from api.Productos.models import Productos
@@ -19,13 +19,6 @@ class CredencialesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuarios
         fields = ('email', 'password',)
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('first_name','last_name','email','password')
-        
-        extra_kwargs = {'password': {'write_only': True}}
 
 class UsuariosGetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,23 +36,9 @@ class MixSerializer(serializers.ModelSerializer):
         model = Usuarios
         fields = ('id','nombre','apellido','productos')
 
-
-
-# Login 
-class UsuarioLoginSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField(max_length=64)
-    
-    def validar(self, data):
-
-        user = authenticate(email=data['email'], password=data['password'])
-        if not user:
-            raise serializers.ValidationError('Las credenciales no son válidas')
-        self.context['user'] = user
-        return data 
-
-    def create(self, data):
-        """Generar o recuperar token."""
-        token = Token.objects.get_or_create(user=self.context['user'])
-        return self.context['user'], token
-
+# class UserSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ('first_name','last_name','email','password')
+        
+#         extra_kwargs = {'password': {'write_only': True}}
