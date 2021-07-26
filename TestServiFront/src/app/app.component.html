@@ -1,2 +1,5 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<app-header *ngIf="mostrarHeader" (cerrarSesion)="ocultarHeader()"></app-header>
+
+<div>
+    <router-outlet></router-outlet>
+</div>

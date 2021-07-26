@@ -7,4 +7,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TestServiFront';
+  mostrarHeader = true;
+  constructor(){
+    setInterval( () => {
+      this.ocultarHeader();
+    }, 1000);
+  }
+
+  ocultarHeader(){
+    if (localStorage.getItem('token') === null){
+      this.mostrarHeader = false;
+    }else{
+      this.mostrarHeader = true;
+    }
+  }
 }
+
+

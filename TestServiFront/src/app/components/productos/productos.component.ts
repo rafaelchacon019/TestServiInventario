@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Productos, Categorias } from '../../models';
 import { ServiceProductoService } from '../../services/service-productos.service';
 import { ServiceCategoriasService } from '../../services/service-categorias.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,12 +12,17 @@ import { ServiceCategoriasService } from '../../services/service-categorias.serv
 })
 export class ProductosComponent implements OnInit {
 
+  filtroBusqueda = '';
   categorias: Categorias = [];
   productos: Productos = [];
   constructor( private serviceProductoService: ServiceProductoService,
-               private serviceCategoriasService: ServiceCategoriasService ) { }
+               private serviceCategoriasService: ServiceCategoriasService,
+               private router: Router ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.obtenerProductos();
     this.obtenerCategorias();
   }
@@ -27,7 +33,6 @@ export class ProductosComponent implements OnInit {
     this.serviceProductoService.obtenerProductos().subscribe(
       (productos) => {
         this.productos = productos;
-        console.log(productos);
       }
     );
   }
@@ -36,7 +41,15 @@ export class ProductosComponent implements OnInit {
     this.serviceCategoriasService.obtenerCategorias().subscribe(
       (categorias) => {
         this.categorias = categorias;
-        console.log(categorias);
+      }
+    );
+  }
+
+  eliminarProducto(idProducto: number){
+    this.serviceProductoService.eliminarProducto(idProducto).subscribe(
+      () => {
+        alert('Se elimino el producto correctamente');
+        this.obtenerProductos();
       }
     );
   }

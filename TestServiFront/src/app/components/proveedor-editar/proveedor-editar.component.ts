@@ -21,6 +21,9 @@ export class ProveedorEditarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.idProveedor = this.rutaActiva.snapshot.params.idProveedor;
     this.obtenerProveedor();
     this.inicializarformulario();

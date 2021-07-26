@@ -46,20 +46,12 @@
                         </span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-font fa-2x"></i>
-                    <span class="nav-text">
-                           Ventas
-                        </span>
-                </a>
-            </li>
 
         </ul>
 
         <ul class="logout">
             <li>
-                <a routerLinkActive="active" [routerLink]="['/login']">
+                <a (click)="salir()">
                     <i class="fa fa-power-off fa-2x"></i>
                     <span class="nav-text">
                             Logout

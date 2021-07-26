@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models';
 import { ServiceUsuarioService } from '../../services/service-usuario.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ServiceUsuarioService } from '../../services/service-usuario.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
 
   usuario: Usuario;
   public formularioGrupo: FormGroup;
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
     return  this.formularioGrupo.get('password').invalid && this.formularioGrupo.get('password').touched;
   }
 
+
   inicializarFormulario(){
     this.formularioGrupo = this.formBuilder.group({
       email: ['', Validators.required],
@@ -43,7 +46,7 @@ export class LoginComponent implements OnInit {
       (usuarios) => {
         if (usuarios.length > 0){
           alert('Se ingreso correctamente');
-          localStorage.setItem('token', this.usuario.id.toString());
+          localStorage.setItem('token', JSON.stringify(usuarios[0].id));
           this.router.navigate(['/home']);
         }else{
           alert('correo o contraseña incorrectos');

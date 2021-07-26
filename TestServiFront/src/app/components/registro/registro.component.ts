@@ -20,7 +20,19 @@ export class RegistroComponent implements OnInit {
     this.inicializarFormulario();
   }
 
-  // tslint:disable-next-line:typedef
+  get nombreNovalido(){
+    return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
+  }
+  get apellidoNovalido(){
+    return  this.formularioGrupo.get('apellido').invalid && this.formularioGrupo.get('apellido').touched;
+  }
+  get emailNovalido(){
+    return  this.formularioGrupo.get('email').invalid && this.formularioGrupo.get('email').touched;
+  }
+  get passwordNovalido(){
+    return  this.formularioGrupo.get('password').invalid && this.formularioGrupo.get('password').touched;
+  }
+
   inicializarFormulario(){
     this.formularioGrupo = this.formBuilder.group({
       id: 0,
@@ -31,7 +43,6 @@ export class RegistroComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
   registrarUsuario(){
     this.serviceUsuarioService.registrarUsuario( this.formularioGrupo.value ).subscribe(
       () => {

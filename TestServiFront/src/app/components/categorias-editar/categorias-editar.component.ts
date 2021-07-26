@@ -21,6 +21,9 @@ export class CategoriasEditarComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.idCategoria = this.rutaActiva.snapshot.params.idCategoria;
     this.obtenerCategoria();
     this.inicializarFormulario();

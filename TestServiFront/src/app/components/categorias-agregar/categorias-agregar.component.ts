@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ServiceCategoriasService } from '../../services/service-categorias.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categorias-agregar',
@@ -12,9 +13,13 @@ export class CategoriasAgregarComponent implements OnInit {
   public formularioGrupo: FormGroup;
 
   constructor(private serviceCategoriasService: ServiceCategoriasService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.inicializarFormulario();
   }
 
@@ -34,8 +39,6 @@ export class CategoriasAgregarComponent implements OnInit {
 
 
   agregarCategoria(){
-    console.log(this.formularioGrupo);
-
     this.serviceCategoriasService.agregarCategoria(this.formularioGrupo.value).subscribe(
       () => {
         alert('Se agregó la categoria correctamente');

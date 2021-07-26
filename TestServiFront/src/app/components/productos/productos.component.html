@@ -4,7 +4,7 @@
             <h1>Productos</h1>
 
             <div class="form-group">
-                <input type="input" class="form-control search" id="buscar" placeholder="Buscar">
+                <input type="input" class="form-control search" id="buscar" name="filtroBusqueda" placeholder="Buscar" [(ngModel)]="filtroBusqueda">
 
                 <button type="button" class="btn btn-block agregar-usuario me-3" routerLinkActive="active" [routerLink]="['/agregarProducto']">
                     <i class="fa fa-plus" aria-hidden="true"></i>
@@ -25,7 +25,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let producto of productos">
+                            <tr *ngFor="let producto of productos | filtro:filtroBusqueda">
                                 <td> {{ producto.nombre }} </td>
                                 <td> {{ producto.detalle }} </td>
                                 <td> {{ producto.cantidad }} </td>
@@ -36,7 +36,7 @@
                                     <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarProducto', producto.id]">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </button>
-                                    <button type="button" class="btn btn-block eliminar-producto me-3">
+                                    <button type="button" class="btn btn-block eliminar-producto me-3" (click)="eliminarProducto(producto.id)">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </td>

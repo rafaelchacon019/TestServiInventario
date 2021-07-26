@@ -21,6 +21,9 @@ export class UsuariosEditarComponent implements OnInit {
                private router: Router ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.idUsuario = this.rutaActiva.snapshot.params.idUsuario;
     this.obtenerUsuario();
     this.inicializarformulario();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceCategoriasService } from '../../services/service-categorias.service';
 import { Categorias } from '../../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categorias',
@@ -12,27 +13,28 @@ export class CategoriasComponent implements OnInit {
   filtroBusqueda = '';
   categorias: Categorias = [];
 
-  constructor(private serviceCategoriasService: ServiceCategoriasService) { }
+  constructor(private serviceCategoriasService: ServiceCategoriasService,
+              private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.obtenerCategorias();
   }
 
-  // tslint:disable-next-line:typedef
   obtenerCategorias(){
     this.serviceCategoriasService.obtenerCategorias().subscribe(
       (categorias => {
         this.categorias = categorias;
-        console.log(categorias);
       })
     );
   }
 
-  // tslint:disable-next-line:typedef
   eliminarCategoria(idCategoria: number){
     this.serviceCategoriasService.eliminarCategoria(idCategoria).subscribe(
       () => {
-        alert('Se elimino el proveedor correctamente');
+        alert('Se elimino la categoria correctamente');
         this.obtenerCategorias();
       }
     );

@@ -1,14 +1,13 @@
 <body>
     <div class="container-fluid">
         <div class="container">
-            <h1 class="home-heading text-center">Inventario</h1>
+            <h1 class="home-heading text-center" style="color:white">Inventario</h1>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
                         <img src="https://i.imgur.com/LIq20N5.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Usuarios</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             <a routerLinkActive="active" [routerLink]="['/usuarios']" class="card-link">Ir a usuarios</a>
                         </div>
                     </div>
@@ -18,8 +17,16 @@
                         <img src="https://i.imgur.com/zOyTskf.jpg" style="min-height: 350px;" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Productos</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             <a routerLinkActive="active" [routerLink]="['/productos']" class="card-link">Ir a productos</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 mt-4">
+                    <div class="card">
+                        <img src="https://i.imgur.com/bMPTS4Z.jpg" style="min-height: 350px;" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Proveedores</h5>
+                            <a routerLinkActive="active" [routerLink]="['/proveedor']" class="card-link">Ir a proveedores</a>
                         </div>
                     </div>
                 </div>

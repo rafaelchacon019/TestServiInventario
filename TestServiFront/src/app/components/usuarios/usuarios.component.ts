@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuarios } from 'src/app/models';
 import { ServiceUsuarioService } from '../../services/service-usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuarios',
@@ -11,9 +12,13 @@ export class UsuariosComponent implements OnInit {
 
   filtroBusqueda = '';
   usuarios: Usuarios = [];
-  constructor( private serviceUsuarioService: ServiceUsuarioService ) { }
+  constructor( private serviceUsuarioService: ServiceUsuarioService,
+               private router: Router ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.obtenerUsuario();
   }
 
@@ -22,7 +27,6 @@ export class UsuariosComponent implements OnInit {
     this.serviceUsuarioService.obtenerUsuarios().subscribe(
       (usuarios) => {
         this.usuarios = usuarios;
-        console.log(usuarios);
       }
     );
   }

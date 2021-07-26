@@ -4,7 +4,6 @@
             <div class="col-lg-10 col-xl-9 mx-auto">
                 <div class="card card-signin flex-row my-5">
                     <div class="card-img-left d-none d-md-flex">
-                        <!-- Background image for card set in CSS! -->
                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">Registro</h5>
@@ -12,29 +11,28 @@
 
                             <div class="mb-3">
                                 <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
-                                <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+                                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNovalido">
+                                <small *ngIf="nombreNovalido" class="text-danger">Este campo es obligatorio</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="apellido">Apellido</label>
-                                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
-                                <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+                                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido" [class.is-invalid]="apellidoNovalido">
+                                <small *ngIf=" formularioGrupo.controls['apellido'].invalid && formularioGrupo.controls['apellido'].touched">Este campo es obligatorio</small>
                             </div>
 
                             <div class="mb-3">
                                 <label for="correo electronico">Correo electronico</label>
-                                <input type="text" class="form-control" placeholder="correo electronico" formControlName="email">
-                                <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
-                                <label for="correo electronico">Correo electronico</label>
+                                <input type="text" class="form-control" placeholder="correo electronico" formControlName="email" [class.is-invalid]="emailNovalido">
+                                <small *ngIf=" formularioGrupo.controls['email'].invalid && formularioGrupo.controls['email'].touched">Este campo es obligatorio</small>
                             </div>
 
                             <hr>
 
                             <div class="mb-3">
                                 <label for="contraseña">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
-                                <small *ngIf=" formularioGrupo.controls['direccion'].invalid && formularioGrupo.controls['direccion'].touched">Este campo es obligatorio</small>
+                                <input type="password" class="form-control" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordNovalido">
+                                <small *ngIf=" formularioGrupo.controls['password'].invalid && formularioGrupo.controls['password'].touched">Este campo es obligatorio</small>
                             </div>
 
                             <button type="button" class="btn btn-lg btn-block text-uppercase mb-3" (click)="registrarUsuario()" [disabled]="formularioGrupo.invalid">Registrar</button>

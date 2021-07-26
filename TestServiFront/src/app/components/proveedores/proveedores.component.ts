@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Proveedores } from '../../models';
 import { ServiceProveedorService } from '../../services/service-proveedor.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proveedores',
@@ -12,23 +13,24 @@ export class ProveedoresComponent implements OnInit {
   filtroBusqueda = '';
   proveedores: Proveedores = [];
 
-  constructor( private serviceProveedorService: ServiceProveedorService ) { }
+  constructor( private serviceProveedorService: ServiceProveedorService,
+               private router: Router ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.obtenerProveedores();
   }
 
-  // tslint:disable-next-line:typedef
   obtenerProveedores(){
     this.serviceProveedorService.obtenerProveedor().subscribe(
       (proveedores) => {
         this.proveedores = proveedores;
-        console.log(proveedores);
       }
     );
   }
 
-  // tslint:disable-next-line:typedef
   eliminarProveedor(idProveedor: number){
     this.serviceProveedorService.eliminarProveedor(idProveedor).subscribe(
       () => {

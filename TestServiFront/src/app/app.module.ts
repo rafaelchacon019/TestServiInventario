@@ -17,7 +17,6 @@ import { ProductosEditarComponent } from './components/productos-editar/producto
 import { ProductosAgregarComponent } from './components/productos-agregar/productos-agregar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { VentasComponent } from './components/ventas/ventas.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 import { ProveedorAgregarComponent } from './components/proveedor-agregar/proveedor-agregar.component';
 import { ProveedorEditarComponent } from './components/proveedor-editar/proveedor-editar.component';
@@ -48,7 +47,6 @@ import { ObtenerNombreCategoriaIdPipe } from './pipes/obtener-nombre-categoria-i
     ProductosAgregarComponent,
     HeaderComponent,
     UsuariosComponent,
-    VentasComponent,
     ProveedoresComponent,
     ProveedorAgregarComponent,
     ProveedorEditarComponent,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceProveedorService } from '../../services/service-proveedor.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, MaxLengthValidator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proveedor-agregar',
@@ -12,33 +13,32 @@ export class ProveedorAgregarComponent implements OnInit {
   public formularioGrupo: FormGroup;
 
   constructor( private serviceProveedorService: ServiceProveedorService,
-               private formBuilder: FormBuilder   ) { }
+               private formBuilder: FormBuilder,
+               private router: Router ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') === null){
+      this.router.navigateByUrl('/login');
+    }
     this.inicializarFormulario();
   }
 
-  // tslint:disable-next-line:typedef
   get nombreNovalido(){
     return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
   }
 
-  // tslint:disable-next-line:typedef
   get direccionNovalido(){
     return  this.formularioGrupo.get('direccion').invalid && this.formularioGrupo.get('direccion').touched;
   }
 
-  // tslint:disable-next-line:typedef
   get nitNovalido(){
     return  this.formularioGrupo.get('nit').invalid && this.formularioGrupo.get('nit').touched;
   }
 
-  // tslint:disable-next-line:typedef
   get telefonoNovalido(){
     return  this.formularioGrupo.get('telefono').invalid && this.formularioGrupo.get('telefono').touched;
   }
 
-  // tslint:disable-next-line:typedef
   inicializarFormulario(){
     this.formularioGrupo = this.formBuilder.group({
       id: 0,
@@ -49,9 +49,7 @@ export class ProveedorAgregarComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
   guardarProveedor( ){
-    console.log(this.formularioGrupo);
     this.serviceProveedorService.agregarProveedor( this.formularioGrupo.value ).subscribe(
       () => {
         alert('Se agregó el proveedor correctamente');

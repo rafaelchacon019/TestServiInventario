@@ -1,39 +1,51 @@
 <body>
     <div class="registration-form">
-        <form>
+        <form [formGroup]="formularioGrupo">
             <div class="upper mb-5">
                 <h1 class="text-center">
-                    Añadir
+                    Editar
                 </h1>
             </div>
             <div class="form-group mb-4">
                 <label class="form-label">Nombre</label>
-                <input type="text" class="form-control item" id="nombre" placeholder="Nombre">
+                <input type="text" class="form-control item" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNovalido">
+                <small *ngIf="nombreNovalido" class="text-danger">Este campo es obligatorio</small>
             </div>
             <div class="form-group mb-4">
                 <label class="form-label">Detalle</label>
-                <input type="password" class="form-control item" id="detalle" placeholder="Detalle">
+                <input type="text" class="form-control item" placeholder="Detalle" formControlName="detalle" [class.is-invalid]="detalleNovalido">
+                <small *ngIf="detalleNovalido" class="text-danger">Este campo es obligatorio</small>
             </div>
             <div class="form-group mb-4">
                 <label class="form-label">Precio</label>
-                <input type="number" class="form-control item" id="precio" placeholder="Precio">
+                <input type="number" class="form-control item" placeholder="Precio" formControlName="precio" [class.is-invalid]="precioNovalido">
+                <small *ngIf="precioNovalido" class="text-danger">Este campo es obligatorio</small>
             </div>
             <div class="form-group mb-4">
                 <label class="form-label">Cantidad</label>
-                <input type="number" class="form-control item" id="cantidad" placeholder="Cantidad">
+                <input type="number" class="form-control item" placeholder="Cantidad" formControlName="cantidad" [class.is-invalid]="cantidadNovalido">
+                <small *ngIf="cantidadNovalido" class="text-danger">Este campo es obligatorio</small>
             </div>
-            <label class="form-label">Categoria</label>
-            <select class="form-select item mb-4">
-                <option selected>Categoria</option>
-                </select>
-            <label class="form-label">Proveedor</label>
-            <select class="form-select item mb-4">
-                <option>Proveedor</option>
+            <div class="form-group mb-4">
+                <label class="form-label">Categoria</label>
+                <select class="form-select item" formControlName="categoria" [class.is-invalid]="categoriaNovalido">
+                    <option value="">Seleccione una categoria</option>
+                    <option *ngFor="let categoria of categorias" [value]="categoria.id"> {{ categoria.nombre }} </option>
             </select>
+                <small *ngIf="categoriaNovalido" class="text-danger">Este campo es obligatorio</small>
+            </div>
+            <div class="form-group-mb4">
+                <label class="form-label">Proveedor</label>
+                <select class="form-select item" formControlName="proveedor" [class.is-invalid]="proveedorNovalido">
+                    <option value=""> Seleccione un proveedor</option>
+                    <option *ngFor="let proveedor of proveedores" [value]="proveedor.id" >{{proveedor.nombre}}</option>
+                </select>
+                <small *ngIf="categoriaNovalido" class="text-danger">Este campo es obligatorio</small>
+            </div>
             <div class="form-group mb-1">
                 <button type="button" class="btn btn-block return me-3" routerLinkActive="active" [routerLink]="['/productos']">Volver</button>
 
-                <button type="button" class="btn btn-block register-prod me-3">Agregar</button>
+                <button type="button" class="btn btn-block register-prod me-3" (click)="actualizarProducto()" [disabled]="formularioGrupo.invalid">Actualizar</button>
             </div>
         </form>
 

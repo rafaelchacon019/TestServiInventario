@@ -18,7 +18,7 @@ export interface Producto{
     cantidad: string;
     precio: number;
     categoria: number;
-    usuario: Usuarios;
+    usuarios: Usuarios;
     proveedor: Proveedores;
 }
 

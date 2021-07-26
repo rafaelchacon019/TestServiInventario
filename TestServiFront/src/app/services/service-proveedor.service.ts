@@ -14,7 +14,6 @@ export class ServiceProveedorService {
     return this.http.get<Proveedores>(url);
   }
 
-  // tslint:disable-next-line:no-shadowed-variable
   agregarProveedor(proveedor: Proveedor): Observable<Proveedores> {
     const url = RutasServicios.urlProveedores;
     return this.http.post<Proveedores>(url, proveedor);
