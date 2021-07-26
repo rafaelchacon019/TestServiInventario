@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     this.serviceUsuarioService.serviceLogin(this.formularioGrupo.value).subscribe(
       (usuarios) => {
         if (usuarios.length > 0){
-          alert('Se ingreso correctamente');
           localStorage.setItem('token', JSON.stringify(usuarios[0].id));
           this.router.navigate(['/home']);
         }else{
