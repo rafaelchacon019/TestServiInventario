@@ -18,7 +18,13 @@ export class CategoriasAgregarComponent implements OnInit {
     this.inicializarFormulario();
   }
 
-  // tslint:disable-next-line:typedef
+
+   get nombreNovalido(){
+    return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
+  }
+
+
+
   inicializarFormulario(){
     this.formularioGrupo = this.formBuilder.group({
       id: 0,
@@ -26,7 +32,7 @@ export class CategoriasAgregarComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
+
   agregarCategoria(){
     console.log(this.formularioGrupo);
 

@@ -1,23 +1,34 @@
 <body>
     <div class="registration-form">
-        <form>
-
-            <div class="form-group">
-                <input type="text" class="form-control item" placeholder="Nombre">
+        <form [formGroup]="formularioGrupo" class="registration-form">
+            <div class="upper mb-5">
+                <h1>
+                    Editar
+                </h1>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control item" placeholder="Apellido">
+            <div class="form-group mb-4">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control item" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNovalido">
+                <small *ngIf="nombreNovalido" class="text-danger">Este campo es obligatorio</small>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" placeholder="Correo electronico">
+            <div class="form-group mb-4">
+                <label class="form-label">Apellido</label>
+                <input type="text" class="form-control item" placeholder="Apellido" formControlName="apellido" [class.is-invalid]="apellidoNovalido">
+                <small *ngIf="apellidoNovalido" class="text-danger">Este campo es obligatorio</small>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control item" placeholder="Contraseña">
+            <div class="form-group mb-4">
+                <label class="form-label">Correo electrónico </label>
+                <input type="text" class="form-control item" placeholder="Correo electrónico" formControlName="email" [class.is-invalid]="emailNovalido">
+                <small *ngIf="emailNovalido" class="text-danger">Este campo es obligatorio</small>
+            </div>
+            <div class="form-group mb-4">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control item" placeholder="Contraseña" formControlName="password">
             </div>
             <div class="form-group mb-1">
                 <button type="button" class="btn btn-block return me-3" routerLinkActive="active" [routerLink]="['/usuarios']">Volver</button>
 
-                <button type="button" class="btn btn-block register-prod me-3">Agregar</button>
+                <button type="button" class="btn btn-block register-prod me-3" (click)="actualizarUsuario()" [disabled]="formularioGrupo.invalid">Agregar</button>
             </div>
         </form>
 

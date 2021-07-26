@@ -6,8 +6,11 @@
                     Editar
                 </h1>
             </div>
-            <input type="text" class="form-control item" placeholder="Nombre" formControlName="nombre">
-            <small *ngIf=" formularioGrupo.controls['nombre'].invalid && formularioGrupo.controls['nombre'].touched">Este campo es obligatorio</small>
+            <div class="form-group mb-4">
+                <input type="text" class="form-control item" placeholder="Nombre" formControlName="nombre" [class.is-invalid]="nombreNovalido">
+                <small *ngIf="nombreNovalido" class="text-danger">Este campo es obligatorio</small>
+            </div>
+
 
             <div class="form-group mb-1">
                 <button type="button" class="btn btn-block return me-3" routerLinkActive="active" [routerLink]="['/categorias']">Volver</button>

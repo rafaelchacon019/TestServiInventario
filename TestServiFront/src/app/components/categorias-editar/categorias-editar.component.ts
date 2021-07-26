@@ -26,6 +26,11 @@ export class CategoriasEditarComponent implements OnInit {
     this.inicializarFormulario();
   }
 
+   // tslint:disable-next-line:typedef
+   get nombreNovalido(){
+    return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
+  }
+
   // tslint:disable-next-line:typedef
   obtenerCategoria(){
     this.serviceCategoriasService.obtenerCategoriaPorId(this.idCategoria).subscribe(

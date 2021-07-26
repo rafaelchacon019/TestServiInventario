@@ -30,6 +30,7 @@ import { ServiceCategoriasService } from './services/service-categorias.service'
 import { ServiceProveedorService } from './services/service-proveedor.service';
 import { UsuariosEditarComponent } from './components/usuarios-editar/usuarios-editar.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { ObtenerNombreCategoriaIdPipe } from './pipes/obtener-nombre-categoria-id.pipe';
 
 
 
@@ -53,6 +54,7 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     ProveedorEditarComponent,
     UsuariosEditarComponent,
     FiltroPipe,
+    ObtenerNombreCategoriaIdPipe,
   ],
   imports: [
     BrowserModule,

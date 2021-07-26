@@ -1,39 +1,41 @@
-<div class="container mt-5">
+<body>
+    <div class="container">
 
-    <div class="upper-part ">
-        <h1>Usuarios</h1>
+        <div class="upper-part ">
+            <h1>Usuarios</h1>
 
-        <div class="form-group">
-            <input type="input" class="form-control search text-center" id="buscar" placeholder="Buscar" name="filtroBusqueda" [(ngModel)]="filtroBusqueda">
+            <div class="form-group">
+                <input type="input" class="form-control search text-center" id="buscar" placeholder="Buscar" name="filtroBusqueda" [(ngModel)]="filtroBusqueda">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-bordered table-striped mr-2">
+                    <thead>
+                        <tr class="table-dark">
+                            <th scope="col" class="text-center">Nombre</th>
+                            <th scope="col" class="text-center">Apellido</th>
+                            <th scope="col" class="text-center">Correo</th>
+                            <th scope="col" class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios | filtro:filtroBusqueda">
+                            <td class="text-center"> {{ usuario.nombre }}</td>
+                            <td class="text-center">{{ usuario.apellido }}</td>
+                            <td class="text-center">{{ usuario.email }}</td>
+                            <td class="actions">
+                                <button type="button" class="btn btn-block editar-usuario me-3" routerLinkActive="active" [routerLink]="['/editarUsuarios', usuario.id]">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-block eliminar-usuario me-3" (click)="eliminarUsuario(usuario.id)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <table class="table table-bordered table-striped mr-2">
-                <thead>
-                    <tr class="table-dark">
-                        <th scope="col" class="text-center">Nombre</th>
-                        <th scope="col" class="text-center">Apellido</th>
-                        <th scope="col" class="text-center">Correo</th>
-                        <th scope="col" class="text-center">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let usuario of usuarios | filtro:filtroBusqueda">
-                        <td class="text-center"> {{ usuario.nombre }}</td>
-                        <td class="text-center">{{ usuario.apellido }}</td>
-                        <td class="text-center">{{ usuario.email }}</td>
-                        <td class="actions">
-                            <button type="button" class="btn btn-block editar-usuario me-3" routerLinkActive="active" [routerLink]="['/editarUsuarios', usuario.id]">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-block eliminar-usuario me-3" (click)="eliminarUsuario(usuario.id)">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+</body>

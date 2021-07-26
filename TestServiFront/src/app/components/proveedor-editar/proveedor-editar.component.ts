@@ -26,7 +26,28 @@ export class ProveedorEditarComponent implements OnInit {
     this.inicializarformulario();
    }
 
-  // tslint:disable-next-line:typedef
+
+  get nombreNovalido(){
+    return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
+  }
+
+
+  get direccionNovalido(){
+    return  this.formularioGrupo.get('direccion').invalid && this.formularioGrupo.get('direccion').touched;
+  }
+
+
+  get nitNovalido(){
+    return  this.formularioGrupo.get('nit').invalid && this.formularioGrupo.get('nit').touched;
+  }
+
+
+  get telefonoNovalido(){
+    return  this.formularioGrupo.get('telefono').invalid && this.formularioGrupo.get('telefono').touched;
+  }
+
+
+
   obtenerProveedor(){
     this.serviceProveedorService.obtenerProveedorPorId(this.idProveedor).subscribe(
       (proveedor) => {
@@ -39,7 +60,7 @@ export class ProveedorEditarComponent implements OnInit {
     );
   }
 
-  // tslint:disable-next-line:typedef
+
   inicializarformulario(){
     this.formularioGrupo = this.formBuilder.group({
       id: this.idProveedor,
@@ -50,7 +71,7 @@ export class ProveedorEditarComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
+
   actualizarProveedor(){
     this.serviceProveedorService.actualizarProveedor(this.idProveedor, this.formularioGrupo.value).subscribe(
       () => {

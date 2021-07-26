@@ -8,6 +8,7 @@ export interface Usuario{
     nombre: string;
     apellido: string;
     email: string;
+    password: string;
 }
 
 export interface Producto{
@@ -17,8 +18,8 @@ export interface Producto{
     cantidad: string;
     precio: number;
     categoria: number;
-    usuario: [];
-    proveedor: [];
+    usuario: Usuarios;
+    proveedor: Proveedores;
 }
 
 export interface Proveedor{

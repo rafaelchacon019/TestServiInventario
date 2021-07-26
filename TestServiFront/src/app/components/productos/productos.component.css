@@ -1,3 +1,15 @@
+body {
+    background: linear-gradient(to right, #b2927e, #98a337);
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.container table {
+    background: white;
+}
+
 .upper-part h1 {
     font-size: 50px;
     text-align: center;

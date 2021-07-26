@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Productos } from '../../models';
+import { Productos, Categorias } from '../../models';
 import { ServiceProductoService } from '../../services/service-productos.service';
+import { ServiceCategoriasService } from '../../services/service-categorias.service';
 
 
 @Component({
@@ -10,19 +11,32 @@ import { ServiceProductoService } from '../../services/service-productos.service
 })
 export class ProductosComponent implements OnInit {
 
+  categorias: Categorias = [];
   productos: Productos = [];
-  constructor( private serviceProductoService: ServiceProductoService ) { }
+  constructor( private serviceProductoService: ServiceProductoService,
+               private serviceCategoriasService: ServiceCategoriasService ) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
+    this.obtenerCategorias();
   }
 
-  // tslint:disable-next-line:typedef
+
+
   obtenerProductos(){
     this.serviceProductoService.obtenerProductos().subscribe(
       (productos) => {
         this.productos = productos;
         console.log(productos);
+      }
+    );
+  }
+
+  obtenerCategorias(){
+    this.serviceCategoriasService.obtenerCategorias().subscribe(
+      (categorias) => {
+        this.categorias = categorias;
+        console.log(categorias);
       }
     );
   }

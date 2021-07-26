@@ -1,39 +1,42 @@
-<div class="container mt-5">
+<body>
+    <div class="container">
 
-    <div class="upper-part mb-3">
-        <h1>Categorias</h1>
+        <div class="upper-part mb-3">
+            <h1>Categorias</h1>
 
-        <div class="form-group">
-            <input type="input" class="form-control search" id="buscar" placeholder="Buscar" name="filtroBusqueda" [(ngModel)]="filtroBusqueda">
+            <div class="form-group">
+                <input type="input" class="form-control search" id="buscar" placeholder="Buscar" name="filtroBusqueda" [(ngModel)]="filtroBusqueda">
 
-            <button type="button" class="btn btn-block agregar-usuario me-3" routerLinkActive="active" [routerLink]="['/agregarCategoria']">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-            </button>
-        </div>
+                <button type="button" class="btn btn-block agregar-usuario me-3" routerLinkActive="active" [routerLink]="['/agregarCategoria']">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
 
-        <div class="row">
-            <div class="col">
-                <table class="table table-bordered table-striped mr-2">
-                    <thead>
-                        <tr class="table-dark">
-                            <th scope="col"> Nombre </th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let categoria of categorias | filtro:filtroBusqueda" class="text-center">
-                            <td class="text-center"> {{ categoria.nombre }} </td>
-                            <td class="actions">
-                                <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarCategoria', categoria.id]">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                </button>
-                                <button type="button" class="btn btn-block eliminar-producto me-3" (click)="eliminarCategoria(categoria.id)">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered table-striped mr-2">
+                        <thead>
+                            <tr class="table-dark">
+                                <th scope="col"> Nombre </th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let categoria of categorias | filtro:filtroBusqueda" class="text-center">
+                                <td class="text-center"> {{ categoria.nombre }} </td>
+                                <td class="actions">
+                                    <button type="button" class="btn btn-block editar-producto me-3" routerLinkActive="active" [routerLink]="['/editarCategoria', categoria.id]">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-block eliminar-producto me-3" (click)="eliminarCategoria(categoria.id)">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+</body>

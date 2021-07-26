@@ -1,5 +1,5 @@
 body {
-    background-color: #007bff;
+    background: linear-gradient(to right, #b2927e, #98a337);
     height: 100%;
     width: 100%;
 }
@@ -23,7 +23,6 @@ body {
 
 .registration-form .item {
     border-radius: 20px;
-    margin-bottom: 25px;
     padding: 10px 20px;
 }
 
@@ -32,7 +31,7 @@ body {
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #5791ff;
+    background-color: #795d4c;
     border: none;
     color: white;
     margin-top: 20px;

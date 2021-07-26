@@ -21,9 +21,9 @@ export class ServiceUsuarioService {
     return this.http.post<Usuarios>(url, usuario);
   }
 
-  actualizarUsuario(idUsuario: number): Observable<Usuario> {
-    const url = RutasServicios.urlUsuarios + 'filterid' + idUsuario + '/';
-    return this.http.get<Usuario>(url);
+  actualizarUsuario(idUsuario: number, usuario: Usuario): Observable<Usuario> {
+    const url = RutasServicios.urlUsuarios + idUsuario + '/';
+    return this.http.put<Usuario>(url, usuario);
   }
 
   eliminarUsuario(idUsuario: number): Observable<Usuario> {
@@ -32,8 +32,14 @@ export class ServiceUsuarioService {
   }
 
   obtenerUsuarioPorId(idUsuario: number): Observable<Usuario>{
-    const url = RutasServicios.urlProveedores + 'filterid/' + idUsuario + '/';
+    const url = RutasServicios.urlUsuarios + 'filterid/' + idUsuario + '/';
     return this.http.get<Usuario>(url);
+  }
+
+
+  serviceLogin(usuario: Usuario): Observable<Usuarios> {
+    const url = RutasServicios.urlUsuarios + 'login/';
+    return this.http.post<Usuarios>(url, usuario);
   }
 }
 

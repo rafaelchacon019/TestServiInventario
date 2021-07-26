@@ -19,6 +19,26 @@ export class ProveedorAgregarComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
+  get nombreNovalido(){
+    return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
+  }
+
+  // tslint:disable-next-line:typedef
+  get direccionNovalido(){
+    return  this.formularioGrupo.get('direccion').invalid && this.formularioGrupo.get('direccion').touched;
+  }
+
+  // tslint:disable-next-line:typedef
+  get nitNovalido(){
+    return  this.formularioGrupo.get('nit').invalid && this.formularioGrupo.get('nit').touched;
+  }
+
+  // tslint:disable-next-line:typedef
+  get telefonoNovalido(){
+    return  this.formularioGrupo.get('telefono').invalid && this.formularioGrupo.get('telefono').touched;
+  }
+
+  // tslint:disable-next-line:typedef
   inicializarFormulario(){
     this.formularioGrupo = this.formBuilder.group({
       id: 0,
@@ -32,7 +52,6 @@ export class ProveedorAgregarComponent implements OnInit {
   // tslint:disable-next-line:typedef
   guardarProveedor( ){
     console.log(this.formularioGrupo);
-
     this.serviceProveedorService.agregarProveedor( this.formularioGrupo.value ).subscribe(
       () => {
         alert('Se agregó el proveedor correctamente');

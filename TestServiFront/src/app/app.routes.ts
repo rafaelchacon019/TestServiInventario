@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component';
+import { UsuariosEditarComponent } from 'src/app/components/usuarios-editar/usuarios-editar.component';
 import { ProductosComponent } from 'src/app/components/productos/productos.component';
 import { ProductosAgregarComponent } from 'src/app/components/productos-agregar/productos-agregar.component';
 import { ProductosEditarComponent } from 'src/app/components/productos-editar/productos-editar.component';
@@ -18,7 +19,7 @@ import { RegistroComponent } from 'src/app/components/registro/registro.componen
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'usuarios', component: UsuariosComponent },
-    { path: 'editarUsuarios/:idUsuario', component: UsuariosComponent },
+    { path: 'editarUsuarios/:idUsuario', component: UsuariosEditarComponent },
     { path: 'productos', component: ProductosComponent },
     { path: 'agregarProducto', component: ProductosAgregarComponent },
     { path: 'editarProducto/:idProducto', component: ProductosEditarComponent },

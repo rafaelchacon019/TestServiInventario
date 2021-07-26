@@ -26,7 +26,16 @@ export class UsuariosEditarComponent implements OnInit {
     this.inicializarformulario();
   }
 
-  // tslint:disable-next-line:typedef
+  get nombreNovalido(){
+    return  this.formularioGrupo.get('nombre').invalid && this.formularioGrupo.get('nombre').touched;
+  }
+  get apellidoNovalido(){
+    return  this.formularioGrupo.get('apellido').invalid && this.formularioGrupo.get('apellido').touched;
+  }
+  get emailNovalido(){
+    return  this.formularioGrupo.get('email').invalid && this.formularioGrupo.get('email').touched;
+  }
+
   obtenerUsuario(){
     this.serviceUsuarioService.obtenerUsuarioPorId(this.idUsuario).subscribe(
       (usuario) => {
@@ -38,24 +47,22 @@ export class UsuariosEditarComponent implements OnInit {
     );
   }
 
-  // tslint:disable-next-line:typedef
   inicializarformulario(){
     this.formularioGrupo = this.formBuilder.group({
       id: this.idUsuario,
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [''],
     });
   }
 
-  // tslint:disable-next-line:typedef
-  // actualizarUsuario(){
-  //   this.serviceUsuarioService.actualizarUsuario(this.idUsuario, this.formularioGrupo.value).subscribe(
-  //     () => {
-  //       alert('Se actualizó el usuario correctamente');
-  //       this.router.navigate(['/usuario']);
-  //     }
-  //   );
-  // }
+  actualizarUsuario(){
+    this.serviceUsuarioService.actualizarUsuario(this.idUsuario, this.formularioGrupo.value).subscribe(
+      () => {
+        alert('Se actualizó el usuario correctamente');
+        this.router.navigate(['/usuarios']);
+      }
+    );
+  }
 }
