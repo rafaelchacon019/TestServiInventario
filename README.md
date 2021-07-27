@@ -34,12 +34,16 @@ Clonar este repositorio y ubicarlo en una carpeta adecuada.
 En los siguientes puntos se describe el proceso para arrancar el programa.
 
 ### Proceso back-end:
-Corra una terminal en la siguiente ubicación:
+Abrir un terminal con la siguiente ubicación:
 
 ***\TestServiInventario\testServiBack***
+#### 1. ctualizar paquete cors-headers.
+    
+    pip install -upgrade django-cors-headers
+    
+#### 2. Correr migraciones y servidor.
 
-#### 1. Correr migraciones y servidor.
-Posterior a la instalación de dependencias y de haber creado la base de datos, se ejecuta los siguientes comandos.
+Posterior a la instalación de dependencias, la acutaliza del paquete y de haber creado la base de datos, se ejecuta los siguientes comandos.
 
     python manage.py makemigrations
     python manage.py migrate
@@ -47,13 +51,16 @@ Posterior a la instalación de dependencias y de haber creado la base de datos, 
 
 ### Proceso front-end
 
-Corra una terminal en la siguiente ubicación:
+Abrir un terminal con la siguiente ubicación:
 
 ***\TestServiInventario\TestServiFront***
 
-#### 1. Correr servidor.
+#### 1. Actualizar los paquetes de Angular.
+
+    npm update
+    
+#### 2. Correr servidor.
 
     ng serve
-
 
 > **Nota:** Tanto como el **back-end** y el **front-end** deben estar ejecutados, es decir, al mismo tiempo.
