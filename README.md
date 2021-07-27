@@ -28,7 +28,7 @@ Clonar este repositorio y ubicarlo en una carpeta adecuada.
  
 ## Instalación de dependencias
 
-    pip install -r ubicacionDelArchivo\equirements.txt
+    pip install -r ubicacionDelArchivo\requirements.txt
 
 ## Iniciando la Aplicación
 En los siguientes puntos se describe el proceso para arrancar el programa.
